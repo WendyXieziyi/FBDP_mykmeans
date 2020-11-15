@@ -30,30 +30,34 @@
 
 ### 输出结果
 
-<img src="images/image-20201029124031317.png" alt="image-20201029124031317"  />![images/image-20201029124053010](images/image-20201029124053010.png)![images/image-20201029124108730](images/image-20201029124108730.png)
+（仅截取部分）
+
+![images/image-20201114235207144](images/image-20201114235207144.png)![images/image-20201114235241953](images/image-20201114235241953.png)![images/image-20201114235316169](images/image-20201114235316169.png)![images/image-20201114235349385](images/image-20201114235349385.png)
 
 ### 监控
 
 #### Yarn
 
-![images/image-20201029124346607](images/image-20201029124346607.png)
+![images/image-20201114233223504](images/image-20201114233223504.png)
+
+![images/image-20201114233256860](images/image-20201114233256860.png)
+
+![images/image-20201114233320439](images/image-20201114233320439.png)
 
 #### HDFS 
 
-![images/image-20201029124437596](images/image-20201029124437596.png)
+![images/image-20201114233432370](images/image-20201114233432370.png)
 
-![images/image-20201029124502341](images/image-20201029124502341.png)
+![images/image-20201114233458755](images/image-20201114233458755.png)
 
-![images/image-20201029124537749](images/image-20201029124537749.png)
+![images/image-20201114233535741](images/image-20201114233535741.png)
 
-## 主要问题
+![images/image-20201114233602302](images/image-20201114233602302.png)
 
-### `cleanup()`中输出问题
+## 可视化
 
-在思路一进行输出时，将String变量与其他常量进行合并，会出现其他常量重复两次的现象（尝试输出发现是合并操作时改变了String变量的值，但只会在有`context.write()`操作时改变，当不进行此操作时不改变）。
+通过python的matplotlib包进行可视化，代码见visualization文件夹。
 
-错误输出现象如下：
+对于3个簇，10次迭代的聚类，可视化结果如下：
 
-![images/image-20201029125016521](images/image-20201029125016521.png)
-
-但若使用TreeSet进行排序，在仅用一个Job的情况下只能将`context.write()`写入`cleanup()`，因此之后采用思路二作为最终版本。当不需要改变输入格式时，采用思路一的输出是正常的。
+![images/result](images/result.png)
