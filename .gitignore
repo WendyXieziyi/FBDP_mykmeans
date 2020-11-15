@@ -1,6 +1,7 @@
 #
 # Standard Maven .gitignore
 #
+images
 target/classes
 target/generated-*
 target/maven-*
